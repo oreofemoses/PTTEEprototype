@@ -1,10 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const showcaseGrid = document.querySelector('.showcase-grid');
-<<<<<<< HEAD
     const imageCount = 125;
-=======
-    const imageCount = 20;
->>>>>>> 198c7f09ca58671cfab1094ea8963482d2b92e24
     const transparentGif = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
     const modalOverlay = document.getElementById('modalOverlay');
     const modalImg = document.getElementById('modalImg');
