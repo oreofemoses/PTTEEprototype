@@ -19,7 +19,54 @@
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content">
             <button class="modal-close" id="modalCloseBtn">&times;</button>
-            <img id="modalImg" src="" alt="Large Design Preview" />
+            
+            <!-- Container for two-column layout -->
+            <div class="modal-two-column-content">
+                <div class="modal-image-column">
+                    <img id="modalImg" src="" alt="Large Design Preview" />
+                </div>
+                
+                <div class="modal-form-column">
+                    <!-- Add the request form here -->
+                    <form id="requestForm" class="request-form" action="https://formspree.io/f/xanjwyol" method="POST">
+                        <h2>Request this Design</h2>
+                        <div class="form-group">
+                            <label for="userEmail">Email:</label>
+                            <input type="email" id="userEmail" name="userEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userSize">Size:</label>
+                            <select id="userSize" name="userSize" required>
+                                <option value="">Select Size</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userColor">Color:</label>
+                            <select id="userColor" name="userColor" required>
+                                <option value="">Select Color</option>
+                                <option value="Black">Black</option>
+                                <option value="White">White</option>
+                                <option value="Gray">Gray</option>
+                                <option value="Navy">Navy</option>
+                                <option value="Red">Red</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userMessage">Message (Optional):</label>
+                            <textarea id="userMessage" name="userMessage" rows="4"></textarea>
+                        </div>
+                        <button type="submit">Submit Request</button>
+
+                        <!-- Hidden input to store the selected design -->
+                        <input type="hidden" id="designInput" name="design" value="">
+                    </form>
+                </div>
+            </div>
+
         </div>
     </div>
 

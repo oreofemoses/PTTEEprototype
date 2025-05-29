@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const showcaseGrid = document.querySelector('.showcase-grid');
-    const imageCount = 107;
+    const imageCount = 125;
     const transparentGif = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
     const modalOverlay = document.getElementById('modalOverlay');
     const modalImg = document.getElementById('modalImg');
     const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const requestForm = document.getElementById('requestForm');
 
     function randomDeg() {
         return (Math.random() * 10 - 5).toFixed(2) + 'deg';
@@ -32,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const largeImgSrc = card.getAttribute('data-full-src');
             modalImg.src = largeImgSrc;
             modalOverlay.classList.add('active');
+            
+            // Set the value of the hidden design input
+            const designInput = document.getElementById('designInput');
+            designInput.value = card.getAttribute('data-full-src');
         });
         return card;
     }
