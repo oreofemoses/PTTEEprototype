@@ -956,4 +956,25 @@ footer p {
 .hero-section + section /* Hero followed by any other section */ {
     margin-top: 0; /* Remove top margin on the section immediately following hero */
     padding-top: 0; /* Remove top padding on the section immediately following hero */
+}
+
+.request-form button[type="submit"] {
+    background-color: #222;
+    color: #ffe100;
+    padding: 0.9rem 1.8rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    width: 100%;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.request-form button[type="submit"]:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
 } 
