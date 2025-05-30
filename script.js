@@ -7,6 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCloseBtn = document.getElementById('modalCloseBtn');
     const requestForm = document.getElementById('requestForm');
 
+    // New elements for help modal
+    const helpIcon = document.querySelector('.help-icon');
+    const helpModalOverlay = document.querySelector('.help-modal-overlay');
+    const helpModalCloseBtn = helpModalOverlay.querySelector('.modal-close');
+
+    // New elements for scrolling interaction
+    const heroSection = document.querySelector('.hero-section');
+    const navCtaButton = document.querySelector('.nav-cta-button');
+    const funDetails = document.querySelector('.fun-details');
+    const heroCtaButton = document.querySelector('.hero-cta-button'); // Get the hero button
+
+    // Custom Design Form Modal Elements
+    const customDesignModal = document.getElementById('customDesignModal');
+    const customDesignModalClose = document.getElementById('customDesignModalClose');
+    const customDesignForm = document.getElementById('customDesignForm');
+
     function randomDeg() {
         return (Math.random() * 10 - 5).toFixed(2) + 'deg';
     }
@@ -115,6 +131,157 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (modalOverlay.classList.contains('active') && (e.key === 'Escape' || e.key === 'Esc')) {
             closeModal();
+        }
+    });
+
+    // Handle form submission for requestForm
+    requestForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Prevent default form submission
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Important for Formspree AJAX
+                }
+            });
+
+            if (response.ok) {
+                alert('Your request has been submitted successfully!');
+                closeModal(); // Close the request modal
+                form.reset(); // Reset form fields
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    alert('Submission failed: ' + data.errors.map(error => error.message).join(', '));
+                } else {
+                    alert('There was an issue with your submission. Please try again.');
+                }
+            }
+        } catch (error) {
+            console.error('Error submitting request form:', error);
+            alert('Network error. Please check your connection and try again.');
+        }
+    });
+
+    // New Help Modal logic
+    function openHelpModal() {
+        helpModalOverlay.classList.add('active');
+    }
+
+    function closeHelpModal() {
+        helpModalOverlay.classList.remove('active');
+    }
+
+    helpIcon.addEventListener('click', openHelpModal);
+
+    helpModalCloseBtn.addEventListener('click', closeHelpModal);
+
+    helpModalOverlay.addEventListener('click', (e) => {
+        if (e.target === helpModalOverlay) closeHelpModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (helpModalOverlay.classList.contains('active') && (e.key === 'Escape' || e.key === 'Esc')) {
+            closeHelpModal();
+        }
+    });
+
+    // Scrolling interaction logic
+    window.addEventListener('scroll', () => {
+        if (heroSection && navCtaButton && heroCtaButton) {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            // Show navbar button and hide hero button when hero is scrolled mostly out of view
+            if (heroBottom <= 100) { // Adjusted threshold
+                navCtaButton.classList.add('visible');
+                heroCtaButton.style.visibility = 'hidden'; // Hide hero button
+                heroCtaButton.style.opacity = '0'; // Fade out hero button
+            } else {
+                navCtaButton.classList.remove('visible');
+                heroCtaButton.style.visibility = 'visible'; // Show hero button
+                heroCtaButton.style.opacity = '1'; // Fade in hero button
+            }
+        }
+    });
+
+    // Intersection Observer to reveal fun details when visible
+    if (funDetails) {
+        const funDetailsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    funDetails.classList.add('visible');
+                    funDetailsObserver.unobserve(funDetails); // Stop observing once visible
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        funDetailsObserver.observe(funDetails);
+    }
+
+    // Function to open custom design modal
+    function openCustomDesignModal() {
+        customDesignModal.classList.add('active');
+    }
+
+    // Function to close custom design modal
+    function closeCustomDesignModal() {
+        customDesignModal.classList.remove('active');
+    }
+
+    // Add click event listeners to both CTA buttons
+    navCtaButton.addEventListener('click', openCustomDesignModal);
+    heroCtaButton.addEventListener('click', openCustomDesignModal);
+
+    // Close modal when clicking the close button
+    customDesignModalClose.addEventListener('click', closeCustomDesignModal);
+
+    // Close modal when clicking outside
+    customDesignModal.addEventListener('click', (e) => {
+        if (e.target === customDesignModal) closeCustomDesignModal();
+    });
+
+    // Close modal when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (customDesignModal.classList.contains('active') && (e.key === 'Escape' || e.key === 'Esc')) {
+            closeCustomDesignModal();
+        }
+    });
+
+    // Handle form submission
+    customDesignForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Prevent default form submission
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Important for Formspree AJAX
+                }
+            });
+
+            if (response.ok) {
+                alert('Your custom design request has been submitted successfully!');
+                closeCustomDesignModal();
+                form.reset(); // Reset form fields
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    alert('Submission failed: ' + data.errors.map(error => error.message).join(', '));
+                } else {
+                    alert('There was an issue with your submission. Please try again.');
+                }
+            }
+        } catch (error) {
+            console.error('Error submitting custom design form:', error);
+            alert('Network error. Please check your connection and try again.');
         }
     });
 }); 
