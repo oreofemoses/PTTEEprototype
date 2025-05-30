@@ -7,14 +7,58 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="brand-logo">{PTTEE}</div>
-        <h1>T-Shirt Design Collection</h1>
-    </header>
-    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="brand-logo">{PTTEE</div>
+        </div>
+        <!-- Nav bar button (hidden by default) -->
+        <button class="cta-button nav-cta-button">Start Your Design</button>
+        <div class="navbar-right">
+            <!-- Question Mark Icon -->
+            <div class="help-icon">?</div>
+        </div>
+    </nav>
+
+    <!-- Combined Header and Hero Section (Minimalist Inspired) -->
+    <section class="hero-section">
+        <h1>Awesome Personalized Shirts!</h1>
+        <h2>Select any of the designs below<br>or</h2>
+        <button class="cta-button hero-cta-button">Start Your Design</button>
+    </section>
+
+    <!-- Main content starts here -->
     <main class="showcase-grid">
         <!-- Cards will be dynamically inserted here -->
     </main>
+
+    <!-- Hidden Help Modal -->
+    <div class="help-modal-overlay">
+        <div class="help-modal-content">
+            <button class="modal-close">&times;</button>
+            <!-- Content from How It Works Section -->
+            <h2>How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <h3>Step 1: Describe Your Idea</h3>
+                    <p>Tell us what you envision for your custom shirt, from detailed concepts to simple keywords.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2: We Design It</h3>
+                    <p>Our talented designers will create a unique graphic based on your description.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 3: Get Your Custom Shirt</h3>
+                    <p>Once you approve the design, we'll print and send your one-of-a-kind t-shirt!</p>
+                </div>
+            </div>
+
+            <!-- Content from About Us Section -->
+            <h2>About Us</h2>
+            <p>We are passionate about bringing your unique t-shirt ideas to life. Our team is dedicated to creating high-quality, personalized designs just for you.</p>
+            <!-- Add more about your story or mission here -->
+        </div>
+    </div>
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content">
@@ -70,6 +114,105 @@
         </div>
     </div>
 
+    <!-- Custom Design Form Modal -->
+    <div class="modal-overlay" id="customDesignModal">
+        <div class="modal-content">
+            <button class="modal-close" id="customDesignModalClose">&times;</button>
+            <form id="customDesignForm" class="request-form" action="https://formspree.io/f/xeokjeyq" method="POST">
+                <h2>PTTEE Custom Shirt Design Request Form</h2>
+                <p class="form-subtitle">Where your vision becomes fashion!</p>
+                
+                <div class="form-group">
+                    <label for="userName">Name *</label>
+                    <input type="text" id="userName" name="userName" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="userEmail">Email Address *</label>
+                    <input type="email" id="userEmail" name="userEmail" placeholder="📧 Enter your email for design delivery and updates" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="shirtType">Shirt Type *</label>
+                    <select id="shirtType" name="shirtType" required>
+                        <option value="">Select Shirt Type</option>
+                        <option value="t-shirt">T-Shirt</option>
+                        <option value="hoodie">Hoodie</option>
+                        <option value="sweatshirt">Sweatshirt</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="shirtColor">Shirt Color Preference (Optional)</label>
+                    <select id="shirtColor" name="shirtColor">
+                        <option value="">🎨 Preferred Color</option>
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                        <option value="gray">Gray</option>
+                        <option value="navy">Navy</option>
+                        <option value="red">Red</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="shirtSize">Shirt Size *</label>
+                    <select id="shirtSize" name="shirtSize" required>
+                        <option value="">Select Size</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                        <option value="Oversize">Oversize</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Describe Your Desired Design *</label>
+                    <p class="form-hint">🖌 Enter 5 keywords that describe the kind of design you want (e.g., streetwear, butterfly, fire, retro, wireframe, bold text)</p>
+                    <input type="text" name="keyword1" placeholder="1st" required>
+                    <input type="text" name="keyword2" placeholder="2nd" required>
+                    <input type="text" name="keyword3" placeholder="3rd" required>
+                    <input type="text" name="keyword4" placeholder="4th" required>
+                    <input type="text" name="keyword5" placeholder="5th" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="extraNotes">Extra Notes (Optional)</label>
+                    <textarea id="extraNotes" name="extraNotes" placeholder="💬 Tell us anything else we should know about your style or idea."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactMethod">How Should We Contact You When Your Design Options Are Ready? *</label>
+                    <select id="contactMethod" name="contactMethod" required>
+                        <option value="">Select Contact Method</option>
+                        <option value="email">Email</option>
+                        <option value="whatsapp">WhatsApp</option>
+                        <option value="telegram">Telegram</option>
+                        <option value="instagram">Instagram</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="contactInput">Input Contact *</label>
+                    <input type="text" id="contactInput" name="contactInput" placeholder="📞 Please make sure your contact info is correct" required>
+                </div>
+
+                <button type="submit">Submit Design Request</button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2023 PTTEE. All rights reserved.</p>
+        <!-- Add Contact Info Here -->
+        <div class="footer-contact-info">
+            <p>Email: info@pttee.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+        <!-- Add links to Privacy Policy, Terms of Service, Social Media, etc. here -->
+    </footer>
 </body>
 </html> 
