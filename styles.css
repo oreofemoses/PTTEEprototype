@@ -18,6 +18,7 @@ body {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;     /* Firefox */
     }
+    padding-top: 5rem; /* Adjust value based on navbar height */
 }
 
 /* Custom Scrollbar Styles for Webkit Browsers (Body) */
@@ -300,10 +301,25 @@ h1 {
     color: #222;
 }
 
+/* Custom Design Form Styles */
+.form-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-hint {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* Style for all form inputs to be consistent */
+.request-form input[type="text"],
 .request-form input[type="email"],
 .request-form select,
-.request-form textarea,
-.request-form select#userColor {
+.request-form textarea {
     width: 100%;
     padding: 0.75rem;
     border: 2px solid #222;
@@ -312,17 +328,134 @@ h1 {
     background-color: #fffbe6;
     color: #222;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    margin-bottom: 0.8rem;
 }
 
-.request-form input[type="email"]:focus,
-.request-form select:focus,
-.request-form textarea:focus {
+.request-form input[type="text"]:last-child,
+.request-form input[type="email"]:last-child,
+.request-form select:last-child,
+.request-form textarea:last-child {
+    margin-bottom: 0;
+}
+
+/* Style for keyword inputs specifically */
+.form-group input[type="text"] {
+    margin-bottom: 0.8rem;
+}
+
+.form-group input[type="text"]:last-child {
+    margin-bottom: 0;
+}
+
+/* Custom Design Form Modal Styles */
+#customDesignModal .modal-content {
+    background: #fffbe6;
+    border-radius: 24px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.25);
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.3s cubic-bezier(.25,1.7,.45,.87);
+}
+
+#customDesignModal .request-form {
+    width: 100%;
+}
+
+#customDesignModal .request-form h2 {
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+#customDesignModal .form-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#customDesignModal .form-hint {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* Style for all form inputs to be consistent */
+#customDesignModal .request-form input[type="text"],
+#customDesignModal .request-form input[type="email"],
+#customDesignModal .request-form select,
+#customDesignModal .request-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #222;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fffbe6;
+    color: #222;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    margin-bottom: 0.8rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#customDesignModal .request-form input[type="text"]:focus,
+#customDesignModal .request-form input[type="email"]:focus,
+#customDesignModal .request-form select:focus,
+#customDesignModal .request-form textarea:focus {
     outline: none;
     border-color: #ffe100;
     box-shadow: 0 0 0 3px rgba(255, 225, 0, 0.3);
 }
 
-.request-form button[type="submit"] {
+#customDesignModal .request-form input[type="text"]:last-child,
+#customDesignModal .request-form input[type="email"]:last-child,
+#customDesignModal .request-form select:last-child,
+#customDesignModal .request-form textarea:last-child {
+    margin-bottom: 0;
+}
+
+/* Style for keyword inputs specifically */
+#customDesignModal .form-group input[type="text"] {
+    margin-bottom: 0.8rem;
+}
+
+#customDesignModal .form-group input[type="text"]:last-child {
+    margin-bottom: 0;
+}
+
+/* Custom scrollbar for the custom design modal */
+#customDesignModal .modal-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+#customDesignModal .modal-content::-webkit-scrollbar-track {
+    background: #fffbe6; /* Match the modal background color */
+    border-radius: 10px;
+}
+
+#customDesignModal .modal-content::-webkit-scrollbar-thumb {
+    background: #fffbe6; /* Match the modal background color */
+    border-radius: 10px;
+}
+
+/* For Firefox */
+#customDesignModal .modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: #fffbe6 #fffbe6; /* thumb and track color */
+}
+
+/* For IE and Edge */
+#customDesignModal .modal-content {
+    -ms-overflow-style: none;
+}
+
+/* Submit button styling */
+#customDesignModal .request-form button[type="submit"] {
     display: inline-block;
     background-color: #222;
     color: #ffe100;
@@ -332,12 +465,43 @@ h1 {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s, opacity 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
     margin-top: 1.5rem;
+    width: 100%;
 }
 
-.request-form button[type="submit"]:hover {
+#customDesignModal .request-form button[type="submit"]:hover {
     background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for custom design form */
+@media (max-width: 768px) {
+    #customDesignModal .modal-content {
+        padding: 1.5rem;
+    }
+    
+    #customDesignModal .request-form h2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #customDesignModal .modal-content {
+        padding: 1rem;
+    }
+    
+    #customDesignModal .request-form h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-subtitle {
+        font-size: 0.9rem;
+    }
 }
 
 /* Responsive adjustments for modal */
@@ -380,4 +544,416 @@ h1 {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
+}
+
+/* --- New Sections Styling --- */
+
+/* Hero Section */
+.hero-section {
+    padding: 2rem 2vw;
+    text-align: center;
+    background-color: #ffe100; /* Set to primary yellow */
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+    padding-bottom: 2rem; /* Reduced bottom padding */
+    position: relative; /* Needed for absolute positioning of fun details if used */
+    gap: 1rem; /* Reduced gap */
+}
+
+.hero-content h1 {
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #222;
+    color: #ffe100;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #333;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* Hero CTA button */
+.hero-cta-button {
+    /* Inherits .cta-button styles */
+    margin-top: 1rem; /* Reduced space above the button */
+}
+
+/* How It Works Section */
+.how-it-works-section {
+    padding: 2rem 2vw;
+    text-align: center;
+    background-color: #ffe100;
+    color: #222;
+}
+
+.how-it-works-section h2,
+.about-us-section h2,
+.testimonials-section h2,
+.contact-section h2 {
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #222;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Allow steps to wrap on smaller screens */
+}
+
+.step {
+    background-color: #fffbe6;
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 300px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.step h3 {
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.step p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* About Us Section */
+.about-us-section {
+    padding: 4rem 2vw;
+    text-align: center;
+    background-color: #fffbe6;
+    color: #222;
+}
+
+.about-us-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer */
+footer {
+    padding: 2rem 2vw;
+    text-align: center;
+    background-color: #222;
+    color: #ffe100;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-contact-info {
+    margin-top: 1rem;
+}
+
+.footer-contact-info p {
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments for new sections */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .how-it-works-section h2,
+    .about-us-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .steps-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step {
+        max-width: 80%;
+    }
+
+    /* - .fun-details h2 {
+    -     font-size: 1.8rem;
+    - }
+    - .fun-details p {
+    -     font-size: 1rem;
+    - }
+    */
+}
+
+@media (max-width: 480px) {
+    .hero-section,
+    .how-it-works-section,
+    .about-us-section,
+    footer {
+        padding: 2rem 4vw;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .step {
+        max-width: 95%;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* - .fun-details h2 {
+    -     font-size: 1.5rem;
+    - }
+    - .fun-details p {
+    -     font-size: 0.9rem;
+    - }
+    */
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffe100; /* Yellow theme */
+    padding: 1rem 2vw; /* Adjust padding as needed */
+    z-index: 100; /* Ensure it stays on top when scrolling */
+    display: flex;
+    justify-content: space-between; /* Space out brand logo/left, button(centered), and icon/right */
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional subtle shadow */
+}
+
+.navbar-left,
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .brand-logo {
+    /* Existing brand-logo styles will apply, but can be adjusted here */
+    margin-bottom: 0; /* Remove bottom margin from previous header styling */
+    /* Adjust margin here if needed to space from button/center */
+}
+
+/* Navbar CTA button (hidden by default) */
+.nav-cta-button {
+    visibility: hidden; /* Hide initially */
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    margin: 0 auto; /* Attempt to center button horizontally within flex container */
+}
+
+.nav-cta-button.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.help-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #222; /* Dark color for the icon */
+    border: 2px solid #222; /* Add a dark border */
+    border-radius: 50%; /* Make it circular */
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.help-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Hidden Help Modal */
+.help-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8); /* Dark semi-transparent background */
+    z-index: 1001; /* Above the navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.help-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.help-modal-content {
+    background: #1a1a1a; /* Deep black background for the card */
+    color: #ffffff; /* White text */
+    border-radius: 12px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    padding: 2rem;
+    max-width: 80%; /* Limit card width */
+    max-height: 80vh; /* Limit card height */
+    overflow-y: auto; /* Add scrolling if content exceeds height */
+    position: relative;
+}
+
+/* Custom Scrollbar Styles for Webkit Browsers in Help Modal */
+.help-modal-content::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.help-modal-content::-webkit-scrollbar-track {
+    background: #1a1a1a; /* Dark background for the track */
+    border-radius: 10px;
+}
+
+.help-modal-content::-webkit-scrollbar-thumb {
+    background: #333; /* Slightly lighter dark for thumb for subtle visibility */
+    border-radius: 10px;
+    border: 3px solid #1a1a1a; /* Border color matching track */
+}
+
+.help-modal-content h2 {
+    color: #ffffff; /* White color for section titles */
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    margin-bottom: 1.5rem;
+}
+
+.help-modal-content h3 {
+    color: #cccccc; /* Lighter white for step titles */
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    margin-bottom: 0.8rem;
+}
+
+.help-modal-content p {
+    color: #eeeeee; /* Off-white for paragraph text */
+    line-height: 1.6;
+    margin-bottom: 1rem; /* Space after paragraphs */
+}
+
+.help-modal-content .steps-container {
+    margin-bottom: 2rem; /* Add space below the steps container */
+}
+
+.help-modal-content .step {
+    background-color: #ffe100; /* Set step card background to yellow */
+    color: #222; /* Dark text for yellow background */
+    padding: 1.5rem; /* Adjust padding */
+    border-radius: 8px; /* Adjust border-radius */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Adjust shadow for dark modal */
+    margin-bottom: 1.5rem; /* Space between steps */
+}
+
+.help-modal-content .step h3 {
+    color: #222; /* Dark color for step titles on yellow background */
+}
+
+.help-modal-content .step p {
+    color: #222; /* Dark color for step text on yellow background */
+    margin-bottom: 0; /* Remove bottom margin from last paragraph in step */
+}
+
+.help-modal-content .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ffe100;
+    color: #222;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.help-modal-content .modal-close:hover {
+    background: #333;
+    color: #ffe100;
+}
+
+/* Responsive adjustments for help modal */
+@media (max-width: 768px) {
+    .help-modal-content {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+    .help-modal-content h2 {
+        font-size: 2rem;
+    }
+    .help-modal-content h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .help-modal-content {
+        max-width: 95%;
+        padding: 1rem;
+    }
+    .help-modal-content h2 {
+        font-size: 1.8rem;
+    }
+    .help-modal-content h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Remove margin/padding between hero and next section for no visible division */
+.hero-section + main.showcase-grid, /* Hero followed by showcase */
+.hero-section + section /* Hero followed by any other section */ {
+    margin-top: 0; /* Remove top margin on the section immediately following hero */
+    padding-top: 0; /* Remove top padding on the section immediately following hero */
 } 
